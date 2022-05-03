@@ -2,16 +2,37 @@ var canvas = document.querySelector('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var c = canvas.getContext('2d');
-var x = 50;
+var x = 200;
 var y = 100;
-var auxX = 0;
-var auxY = 0;
+var dx = 4;
+var dy = 0;
 
+function animate (){ 
+ requestAnimationFrame(animate);
+
+ c.clearRect(0,0,innerWidth,innerHeight); //Apaga toda a tela
+
+ c.fillStyle = '#d22200'; //Escolhe a cor
+ c.fillRect(x, 200, 200, 200); //Posiciona X e Y
+
+ if((x + 200) > innerWidth ){
+   dx =- dx
+ }
+ else if (x<0) dx=-dx
+ x = x+dx;
+
+
+}
+animate();
+
+
+/*
 function GerarCorHexadecimal() {
     return '#' + parseInt((Math.random() * 0xFFF))
         .toString(16)
         .padStart(3, '0');
-}
+} 
+
 //Desafio 1 
 for (var i = 0; i < 10; i++) {
     //auxX = x + auxX; //Reposiciona em X
@@ -328,3 +349,4 @@ c.fill();
 // Shoraste?
 // Bom, mas eu tentei fazer 
 // De qualquer forma, parabénssssss igor :3
+*/
